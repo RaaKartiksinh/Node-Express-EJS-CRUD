@@ -1,0 +1,49 @@
+
+<div class="container mt-5">
+  <%-include("./components/model22.ejs",{id:"id22"}) %>
+          <button class="btn btn-primary"  data-bs-toggle="modal" data-bs-target="<%='#id22' %>"> Add Books</button>
+
+</div>
+
+
+<section class="container">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Price</th>
+        <th scope="col">Publisher</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% let i=0;
+             while (i < Books.length) { %>
+      <tr>
+        <td>
+          <%= Books[i]._id %>
+        </td>
+        <td>
+          <%= Books[i].name %>
+        </td>
+        <td>
+          $ <%= Books[i].price %>
+        </td>
+        <td>
+          <%= Books[i].Publisher %>
+        </td>
+        <td>
+          <button class="btn btn-danger m-2 " onclick="deleteUser('<%= Books[i]._id%>')"> Delete</button>
+
+          <%-include("./components/model.ejs",{id:'id'+Books[i]._id,name:Books[i].name,price:Books[i].price,publisher:Books[i].Publisher ,_id:Books[i]._id}) %>
+          <button class="btn btn-primary m-2"  data-bs-toggle="modal" data-bs-target="<%='#id'+Books[i]._id %>"> Update</button>
+
+        </td>
+      </tr>
+      <% i++; } %>
+    </tbody>
+  </table>
+
+
+</section>
